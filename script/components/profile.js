@@ -22,6 +22,7 @@
                                 muted
                                 loop
                                 playsinline
+                                webkit-playsinline
                                 preload="auto"
                             >
                                 <source
@@ -70,35 +71,187 @@
 
 
             // =====================================================
-            // VIDEO DEBUGGING
+            // VIDEO SETTINGS
             // =====================================================
 
-            video.addEventListener("loadeddata", () => {
+            if (video) {
 
-                console.log(
-                    "✅ Birthday photo video loaded successfully."
+                // Explicitly force muted autoplay
+                video.muted = true;
+                video.defaultMuted = true;
+
+                video.autoplay = true;
+                video.loop = true;
+                video.playsInline = true;
+
+                // -------------------------------------------------
+                // Start video
+                // -------------------------------------------------
+
+                const startVideo = () => {
+
+                    if (!video) return;
+
+                    video.muted = true;
+
+                    const playPromise =
+                        video.play();
+
+                    if (playPromise !== undefined) {
+
+                        playPromise
+                            .then(() => {
+
+                                console.log(
+                                    "▶️ Birthday video started."
+                                );
+
+                            })
+                            .catch((error) => {
+
+                                console.warn(
+                                    "⚠️ Video autoplay was blocked:",
+                                    error
+                                );
+
+                            });
+
+                    }
+                };
+
+
+                // Try immediately
+                startVideo();
+
+
+                // Try again after rendering
+                setTimeout(() => {
+
+                    startVideo();
+
+                }, 100);
+
+
+                // Try again after section animation
+                setTimeout(() => {
+
+                    startVideo();
+
+                }, 1000);
+
+
+                // -------------------------------------------------
+                // VIDEO LOADED
+                // -------------------------------------------------
+
+                video.addEventListener(
+                    "loadeddata",
+                    () => {
+
+                        console.log(
+                            "✅ Birthday video loaded successfully."
+                        );
+
+                        console.log(
+                            "Video:",
+                            "./video/edit.mp4"
+                        );
+
+                        startVideo();
+
+                    }
                 );
 
-            });
 
+                // -------------------------------------------------
+                // VIDEO CAN PLAY
+                // -------------------------------------------------
 
-            video.addEventListener("error", (event) => {
+                video.addEventListener(
+                    "canplay",
+                    () => {
 
-                console.error(
-                    "❌ Birthday photo video could not be loaded."
+                        console.log(
+                            "▶️ Birthday video can play."
+                        );
+
+                    }
                 );
 
-                console.error(
-                    "Video path:",
-                    "./videos/birthday-photos.mp4"
+
+                // -------------------------------------------------
+                // VIDEO ERROR
+                // -------------------------------------------------
+
+                video.addEventListener(
+                    "error",
+                    (event) => {
+
+                        console.error(
+                            "❌ Birthday video could not be loaded."
+                        );
+
+                        console.error(
+                            "Video path:",
+                            "./video/edit.mp4"
+                        );
+
+                        console.error(
+                            "Video element:",
+                            video
+                        );
+
+                        console.error(
+                            "Error:",
+                            event
+                        );
+
+                    }
                 );
 
-                console.error(
-                    "Error:",
-                    event
+
+                // -------------------------------------------------
+                // Make sure it keeps playing
+                // -------------------------------------------------
+
+                video.addEventListener(
+                    "pause",
+                    () => {
+
+                        if (
+                            !video.ended
+                        ) {
+
+                            setTimeout(() => {
+
+                                video.play()
+                                    .catch(() => {});
+
+                            }, 100);
+
+                        }
+
+                    }
                 );
 
-            });
+
+                // -------------------------------------------------
+                // Extra loop fallback
+                // -------------------------------------------------
+
+                video.addEventListener(
+                    "ended",
+                    () => {
+
+                        video.currentTime = 0;
+
+                        video.play()
+                            .catch(() => {});
+
+                    }
+                );
+
+            }
 
 
             // =====================================================
@@ -110,7 +263,9 @@
                 .map((char) => {
 
                     if (char === " ") {
+
                         return "<span>&nbsp;</span>";
+
                     }
 
                     return `<span>${char}</span>`;
@@ -127,6 +282,8 @@
 
             function animateBorder() {
 
+                if (!border) return;
+
                 border.classList.remove(
                     "profile-border-animate"
                 );
@@ -137,6 +294,7 @@
                 border.classList.add(
                     "profile-border-animate"
                 );
+
             }
 
 
@@ -164,6 +322,8 @@
 
                     video.pause();
 
+                    video.currentTime = 0;
+
                 }
 
             };
@@ -186,7 +346,9 @@
         animate(tl, el) {
 
             const wrapper =
-                el.querySelector(".profile-wrapper");
+                el.querySelector(
+                    ".profile-wrapper"
+                );
 
             const border =
                 el.querySelector(
@@ -194,7 +356,9 @@
                 );
 
             const video =
-                el.querySelector(".profile-video");
+                el.querySelector(
+                    ".profile-video"
+                );
 
             const titleLetters =
                 el.querySelectorAll(
@@ -202,7 +366,37 @@
                 );
 
             const wishText =
-                el.querySelector(".wish-text");
+                el.querySelector(
+                    ".wish-text"
+                );
+
+
+            // -----------------------------------------------------
+            // Start video when section animation begins
+            // -----------------------------------------------------
+
+            if (video) {
+
+                video.muted = true;
+
+                video.play()
+                    .then(() => {
+
+                        console.log(
+                            "▶️ Profile video playing."
+                        );
+
+                    })
+                    .catch((error) => {
+
+                        console.warn(
+                            "⚠️ Could not start profile video:",
+                            error
+                        );
+
+                    });
+
+            }
 
 
             // -----------------------------------------------------
@@ -224,9 +418,9 @@
             }, "-=1.5")
 
 
-                // -----------------------------------------------------
+                // -------------------------------------------------
                 // BORDER
-                // -----------------------------------------------------
+                // -------------------------------------------------
 
                 .from(border, {
 
@@ -243,9 +437,9 @@
                 }, "-=0.6")
 
 
-                // -----------------------------------------------------
+                // -------------------------------------------------
                 // VIDEO
-                // -----------------------------------------------------
+                // -------------------------------------------------
 
                 .from(video, {
 
@@ -260,9 +454,9 @@
                 }, "-=0.5")
 
 
-                // -----------------------------------------------------
+                // -------------------------------------------------
                 // TITLE
-                // -----------------------------------------------------
+                // -------------------------------------------------
 
                 .from(titleLetters, {
 
@@ -281,9 +475,9 @@
                 })
 
 
-                // -----------------------------------------------------
+                // -------------------------------------------------
                 // TITLE COLOR
-                // -----------------------------------------------------
+                // -------------------------------------------------
 
                 .to(titleLetters, {
 
@@ -298,9 +492,9 @@
                 }, "-=0.3")
 
 
-                // -----------------------------------------------------
+                // -------------------------------------------------
                 // WISH TEXT
-                // -----------------------------------------------------
+                // -------------------------------------------------
 
                 .from(wishText, {
 
