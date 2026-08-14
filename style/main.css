@@ -1,0 +1,1092 @@
+/* ================================================================
+   BIRTHDAY WEBSITE - COMPLETE STYLESHEET
+   ================================================================ */
+
+
+/* ================================================================
+   CSS VARIABLES
+   ================================================================ */
+
+:root {
+  --primary: #f472b6;
+  --accent: #60a5fa;
+  --bg: #0f172a;
+  --text: #f1f5f9;
+}
+
+
+/* ================================================================
+   RESET
+   ================================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ================================================================
+   HTML / BODY
+   ================================================================ */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+
+  background: var(--bg);
+  color: var(--text);
+
+  -webkit-font-smoothing: antialiased;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease;
+}
+
+
+/* ================================================================
+   AUDIO
+   ================================================================ */
+
+.song {
+  display: none;
+}
+
+
+/* ================================================================
+   THEME TOGGLE
+   ================================================================ */
+
+#theme-toggle {
+  position: fixed;
+
+  top: 1rem;
+  right: 1rem;
+
+  z-index: 9999;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(128, 128, 128, 0.12);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(128, 128, 128, 0.15);
+
+  border-radius: 50%;
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+
+  background: rgba(128, 128, 128, 0.2);
+}
+
+
+/* ================================================================
+   MAIN CONTAINER
+   ================================================================ */
+
+.container {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  visibility: hidden;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+/* ================================================================
+   SECTION BASE
+   ================================================================ */
+
+.section {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 2rem 1.5rem;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+
+/* ================================================================
+   GREETING
+   ================================================================ */
+
+.greeting-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  max-width: 90%;
+
+  overflow-wrap: break-word;
+
+  word-break: break-word;
+}
+
+.greeting-name {
+  display: block;
+
+  color: var(--primary);
+}
+
+.greeting-subtitle {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+
+  font-weight: 300;
+
+  margin-top: 0.8rem;
+
+  opacity: 0.65;
+
+  max-width: 80%;
+}
+
+
+/* ================================================================
+   ANNOUNCEMENT
+   ================================================================ */
+
+.section-announcement p {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+
+  font-weight: 600;
+
+  padding: 0 1rem;
+
+  overflow-wrap: break-word;
+}
+
+
+/* ================================================================
+   CHATBOX
+   ================================================================ */
+
+.text-box {
+  position: relative;
+
+  width: 88%;
+  max-width: 540px;
+
+  padding: 1.8rem;
+
+  text-align: left;
+
+  background: rgba(128, 128, 128, 0.05);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1.5px solid rgba(128, 128, 128, 0.12);
+
+  border-radius: 18px;
+}
+
+.hbd-chatbox {
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+
+  line-height: 1.8;
+
+  font-weight: 300;
+
+  overflow-wrap: break-word;
+
+  word-break: break-word;
+}
+
+.hbd-chatbox span {
+  visibility: hidden;
+}
+
+.fake-btn {
+  position: absolute;
+
+  right: 14px;
+  bottom: -42px;
+
+  padding: 0.5rem 1.4rem;
+
+  background: var(--accent);
+
+  color: #fff;
+
+  border-radius: 10px;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* ================================================================
+   IDEAS
+   ================================================================ */
+
+.section-ideas .idea-line {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  padding: 0 1.5rem;
+
+  font-size: clamp(1.2rem, 4vw, 2rem);
+
+  font-weight: 300;
+
+  opacity: 0;
+}
+
+.idea-line strong {
+  display: inline-block;
+
+  padding: 3px 10px;
+
+  border-radius: 6px;
+
+  font-weight: 600;
+}
+
+.idea-special {
+  font-size: clamp(2rem, 6vw, 3.5rem) !important;
+
+  font-weight: 600 !important;
+}
+
+.idea-special span {
+  display: inline-block;
+}
+
+.idea-big-letters {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+}
+
+.idea-big-letters span {
+  display: inline-block;
+
+  font-size: clamp(7rem, 22vw, 14rem);
+
+  font-weight: 800;
+
+  color: var(--primary);
+}
+
+
+/* ================================================================
+   COUNTDOWN
+   ================================================================ */
+
+.countdown-wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 200px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.countdown-num {
+  position: absolute;
+
+  font-size: clamp(5rem, 18vw, 10rem);
+
+  font-weight: 800;
+
+  color: var(--accent);
+
+  opacity: 0;
+}
+
+.countdown-go {
+  position: absolute;
+
+  font-size: clamp(4rem, 15vw, 8rem);
+
+  opacity: 0;
+}
+
+
+/* ================================================================
+   QUOTE
+   ================================================================ */
+
+.quote-card {
+  width: 88%;
+  max-width: 520px;
+
+  padding: 2.5rem;
+
+  background: rgba(128, 128, 128, 0.05);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1.5px solid rgba(128, 128, 128, 0.1);
+
+  border-radius: 20px;
+}
+
+.quote-mark {
+  display: block;
+
+  font-size: clamp(2.5rem, 7vw, 4rem);
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  color: var(--primary);
+
+  opacity: 0.6;
+
+  margin-bottom: -0.3rem;
+}
+
+.quote-text {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+
+  font-weight: 300;
+
+  line-height: 1.7;
+
+  font-style: italic;
+
+  overflow-wrap: break-word;
+}
+
+.quote-author {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+
+  margin-top: 1rem;
+
+  opacity: 0.5;
+}
+
+
+/* ================================================================
+   STARS
+   ================================================================ */
+
+.section-stars {
+  position: fixed !important;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  opacity: 0.4;
+
+  animation:
+    twinkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.1;
+
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 0.8;
+
+    transform: scale(1.2);
+  }
+}
+
+
+/* ================================================================
+   FIREWORKS
+   ================================================================ */
+
+.section-fireworks {
+  position: fixed !important;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 4;
+}
+
+.firework-spark {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+
+/* ================================================================
+   BALLOONS
+   ================================================================ */
+
+.section-balloons {
+  position: fixed !important;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.section-balloons img {
+  position: absolute;
+
+  width: clamp(90px, 18vw, 160px);
+
+  height: auto;
+}
+
+.section-balloons img:nth-child(even) {
+  left: 5%;
+}
+
+.section-balloons img:nth-child(odd) {
+  right: 5%;
+}
+
+.section-balloons img:nth-child(3n) {
+  left: 22%;
+}
+
+.section-balloons img:nth-child(5n) {
+  left: 48%;
+}
+
+.section-balloons img:nth-child(7n) {
+  left: 68%;
+}
+
+.section-balloons img:nth-child(11n) {
+  left: 82%;
+}
+
+
+/* ================================================================
+   PROFILE SECTION
+   ================================================================ */
+
+/*
+   IMPORTANT:
+
+   This is the ONLY profile-photo CSS block.
+
+   The JavaScript uses:
+
+   .profile-image-visible
+   .profile-image-fade
+   .profile-border-animate
+
+   Do not add another .profile-picture animation elsewhere.
+*/
+
+.section-profile {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 10;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 2rem 1.5rem;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+
+/* ================================================================
+   PROFILE PHOTO WRAPPER
+   ================================================================ */
+
+.profile-wrapper {
+  position: relative;
+
+  width: min(72vw, 320px);
+
+  height: min(72vw, 420px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  z-index: 20;
+
+  perspective: 1000px;
+}
+
+
+/* ================================================================
+   PROFILE BORDER
+   ================================================================ */
+
+.profile-border-animation {
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  padding: 8px;
+
+  border: 3px solid var(--primary);
+
+  border-radius: 22px;
+
+  background: transparent;
+
+  transform: rotate(-2deg);
+
+  transform-origin: center center;
+
+  z-index: 20;
+
+  transition:
+    transform 0.7s ease,
+    border-radius 0.7s ease,
+    box-shadow 0.7s ease;
+}
+
+
+/* ================================================================
+   DECORATIVE SECOND BORDER
+   ================================================================ */
+
+.profile-border-animation::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -8px;
+
+  border: 2px dashed var(--accent);
+
+  border-radius: 28px;
+
+  opacity: 0.8;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  transform: rotate(0deg);
+
+  transition:
+    transform 0.7s ease,
+    border-radius 0.7s ease,
+    opacity 0.7s ease;
+}
+
+
+/* ================================================================
+   BORDER ANIMATION
+   ================================================================ */
+
+.profile-border-animation.profile-border-animate {
+  transform:
+    rotate(2deg) scale(1.025);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 0 15px rgba(244, 114, 182, 0.18),
+    0 0 30px rgba(244, 114, 182, 0.12);
+}
+
+.profile-border-animation.profile-border-animate::before {
+  transform:
+    rotate(-4deg) scale(1.02);
+
+  border-radius: 33px;
+
+  opacity: 1;
+}
+
+
+/* ================================================================
+   PROFILE IMAGE
+   ================================================================ */
+
+.section-profile .profile-picture {
+  position: relative;
+
+  display: block !important;
+
+  width: 100% !important;
+
+  height: 100% !important;
+
+  max-width: none !important;
+
+  max-height: none !important;
+
+  min-width: 0;
+
+  min-height: 0;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  background: transparent;
+
+  border: none !important;
+
+  border-radius: 15px;
+
+  outline: none;
+
+  box-shadow: none;
+
+  z-index: 30;
+
+  visibility: visible !important;
+
+  opacity: 1;
+
+  transform:
+    scale(1) rotate(0deg);
+
+  transform-origin: center center;
+
+  animation: none !important;
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease;
+}
+
+
+/* ================================================================
+   INITIAL / VISIBLE IMAGE
+   ================================================================ */
+
+.section-profile .profile-picture.profile-image-visible {
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  transform:
+    scale(1) rotate(0deg);
+}
+
+
+/* ================================================================
+   FADE OUT IMAGE
+   ================================================================ */
+
+.section-profile .profile-picture.profile-image-fade {
+  opacity: 0 !important;
+
+  visibility: visible !important;
+
+  transform:
+    scale(1.06) rotate(1deg);
+}
+
+
+/* ================================================================
+   PROFILE WISH
+   ================================================================ */
+
+.section-profile .wish {
+  position: relative;
+
+  z-index: 40;
+
+  max-width: 90%;
+
+  margin-top: 1.5rem;
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+
+/* ================================================================
+   PROFILE TITLE
+   ================================================================ */
+
+.section-profile .wish-hbd {
+  font-size: clamp(1.4rem, 4.5vw, 2.5rem);
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+
+  letter-spacing: 2px;
+}
+
+.section-profile .wish-hbd span {
+  display: inline-block;
+}
+
+
+/* ================================================================
+   PROFILE WISH TEXT
+   ================================================================ */
+
+.section-profile .wish-text {
+  font-size: clamp(0.9rem, 2.8vw, 1.4rem);
+
+  font-weight: 300;
+
+  line-height: 1.5;
+
+  margin-top: 0.5rem;
+
+  opacity: 0.7;
+
+  overflow-wrap: break-word;
+
+  word-break: break-word;
+}
+
+
+/* ================================================================
+   PROFILE IMAGE LOADING
+   ================================================================ */
+
+.section-profile .profile-picture:not(.profile-image-fade) {
+  background: transparent;
+}
+
+
+/* ================================================================
+   CONFETTI
+   ================================================================ */
+
+.section-confetti {
+  position: fixed !important;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 3;
+}
+
+.confetti-dot {
+  position: absolute;
+
+  width: 20px;
+
+  visibility: hidden;
+}
+
+
+/* ================================================================
+   CLOSING
+   ================================================================ */
+
+.section-closing p {
+  font-size: clamp(1rem, 3.5vw, 1.8rem);
+
+  font-weight: 300;
+
+  line-height: 1.9;
+
+  padding: 0 1rem;
+
+  overflow-wrap: break-word;
+}
+
+.replay-btn {
+  cursor: pointer;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  color: var(--accent) !important;
+
+  font-weight: 500 !important;
+
+  transition:
+    opacity 0.3s ease;
+}
+
+.replay-btn:hover {
+  opacity: 0.7;
+}
+
+.last-smile {
+  display: inline-block;
+
+  font-size: clamp(2rem, 5vw, 3rem) !important;
+
+  margin-top: 1rem;
+}
+
+
+/* ================================================================
+   SMALL MOBILE
+   ================================================================ */
+
+@media screen and (max-width: 600px) {
+
+  .section {
+    padding: 1.2rem 1rem;
+  }
+
+
+  /* Chatbox */
+
+  .text-box {
+    width: 94%;
+
+    padding: 1.2rem;
+  }
+
+
+  .fake-btn {
+    right: 8px;
+
+    bottom: -36px;
+
+    padding: 0.4rem 1rem;
+
+    font-size: 0.8rem;
+  }
+
+
+  /* Quote */
+
+  .quote-card {
+    width: 92%;
+
+    padding: 1.5rem;
+  }
+
+
+  /* Theme */
+
+  #theme-toggle {
+    top: 0.75rem;
+
+    right: 0.75rem;
+
+    width: 38px;
+
+    height: 38px;
+
+    font-size: 1rem;
+  }
+
+
+  /* Profile */
+
+  .profile-wrapper {
+    width: min(72vw, 280px);
+
+    height: min(82vw, 360px);
+  }
+
+
+  .profile-border-animation {
+    padding: 6px;
+
+    border-width: 2px;
+  }
+
+
+  .profile-border-animation::before {
+    inset: -6px;
+
+    border-width: 1.5px;
+  }
+
+
+  .section-profile .wish {
+    margin-top: 1.2rem;
+  }
+
+
+  .section-profile .wish-hbd {
+    letter-spacing: 1px;
+  }
+
+}
+
+
+/* ================================================================
+   LANDSCAPE MOBILE
+   ================================================================ */
+
+@media screen and (max-height: 500px) {
+
+  .section {
+    padding: 0.5rem 1rem;
+  }
+
+
+  .greeting-title {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+  }
+
+
+  /* Profile */
+
+  .profile-wrapper {
+    width: min(45vh, 200px);
+
+    height: min(60vh, 280px);
+  }
+
+
+  .section-profile .wish {
+    margin-top: 0.7rem;
+  }
+
+
+  .section-profile .wish-hbd {
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+  }
+
+
+  .section-profile .wish-text {
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+  }
+
+
+  /* Countdown */
+
+  .countdown-num {
+    font-size: clamp(4rem, 14vw, 7rem);
+  }
+
+
+  /* Quote */
+
+  .quote-card {
+    padding: 1.2rem;
+  }
+
+
+  /* Announcement */
+
+  .section-announcement p {
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
+  }
+
+}
+
+
+/* ================================================================
+   SWEETALERT2
+   ================================================================ */
+
+.swal2-popup {
+  border-radius: 16px !important;
+}
+
+
+/* ================================================================
+   ACCESSIBILITY
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .profile-border-animation,
+  .profile-border-animation::before,
+  .profile-picture {
+    transition: none !important;
+
+    animation: none !important;
+  }
+
+  .star {
+    animation: none !important;
+  }
+}
