@@ -1090,3 +1090,168 @@ body {
     animation: none !important;
   }
 }
+
+/* =========================================================
+   RESPONSIVE PROFILE VIDEO
+   ========================================================= */
+
+.profile-video {
+  display: block;
+
+  /* Never exceed its parent */
+  width: 100%;
+  height: 100%;
+
+  /* Keep the video proportional */
+  object-fit: cover;
+  object-position: center center;
+
+  /* Rounded corners */
+  border-radius: 15px;
+
+  /* Prevent inline-video spacing issues */
+  margin: 0;
+  padding: 0;
+
+  /* Remove unwanted borders */
+  border: none;
+  outline: none;
+
+  /* Smooth rendering */
+  background: transparent;
+
+  /* Prevent selection */
+  user-select: none;
+  -webkit-user-select: none;
+
+  /* Make sure it stays inside the photo frame */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+/* =========================================================
+   VIDEO CONTAINER
+   ========================================================= */
+
+.profile-image-container {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   DESKTOP / LAPTOP
+   ========================================================= */
+
+@media screen and (min-width: 769px) {
+
+  .profile-wrapper {
+    width: min(32vw, 360px);
+    height: min(62vh, 450px);
+
+    max-width: 360px;
+    max-height: 450px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+  .profile-wrapper {
+    width: min(55vw, 330px);
+    height: min(65vh, 420px);
+
+    max-width: 330px;
+    max-height: 420px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 480px) {
+
+  .profile-wrapper {
+    width: 78vw;
+    height: 58vh;
+
+    max-width: 300px;
+    max-height: 390px;
+  }
+
+  .profile-video {
+    border-radius: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media screen and (max-width: 360px) {
+
+  .profile-wrapper {
+    width: 78vw;
+    height: 55vh;
+
+    max-width: 270px;
+    max-height: 350px;
+  }
+
+  .profile-video {
+    border-radius: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONES
+   ========================================================= */
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+  .profile-wrapper {
+    width: min(35vw, 250px);
+    height: 75vh;
+
+    max-width: 250px;
+    max-height: 330px;
+  }
+
+}
+
+
+/* =========================================================
+   LARGE LAPTOP / DESKTOP
+   ========================================================= */
+
+@media screen and (min-width: 1400px) {
+
+  .profile-wrapper {
+    width: 360px;
+    height: 450px;
+  }
+
+}
