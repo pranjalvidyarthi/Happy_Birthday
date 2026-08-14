@@ -96,8 +96,7 @@ const CONFIG = {
   {
     type: "profile",
     wishTitle: "Happy Birthday!",
-    wishText:
-      "Keep smiling, keep being your cute self, and please don’t ever change. 🫶🏻",
+    wishText: "<strong>Cutie!</strong> 🎀Keep smiling, keep being your cute self, and please don’t ever change. 🫶🏻",
   },
 
   {
