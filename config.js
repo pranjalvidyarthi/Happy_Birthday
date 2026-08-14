@@ -39,91 +39,90 @@ const CONFIG = {
 
   // ── Sections ──────────────────────────────────────────────────
   sections: [
-    {
-      type: "greeting",
-      title: "Hi",
-      subtitle: "I really like your name btw!",
-    },
 
-    {
-      type: "countdown",
-      from: 3,
-      goText: "🎉",
-    },
+  {
+    type: "greeting",
+    title: "Hi",
+    subtitle: "I really like your name btw!",
+  },
 
-    {
-      type: "announcement",
-      text: "It's your birthday!! :D",
-    },
+  {
+    type: "countdown",
+    from: 3,
+    goText: "🎉",
+  },
 
-    {
-      type: "chatbox",
-      message:
-        "Happy birthday to youu!! Wishing you a wonderful year ahead filled with joy, love, and endless happiness!",
-      buttonText: "Send",
-    },
+  {
+    type: "announcement",
+    text: "It's your birthday!! :D",
+  },
 
-    {
-      type: "ideas",
-      lines: [
-        "That's what I was going to do.",
-        "But then I stopped.",
-        "I realised, I wanted to do something <strong>special</strong>.",
-        "Because,",
-        "You are Special <span>:)</span>",
-      ],
-      bigLetters: "SO",
-    },
+  {
+    type: "chatbox",
+    message:
+      "Happy birthday to youu!! Wishing you a wonderful year ahead filled with joy, love, and endless happiness!",
+    buttonText: "Send",
+  },
 
-    {
-      type: "quote",
-      text: "The more you praise and celebrate your life, the more there is in life to celebrate.",
-      author: "~ Someone Famous",
-    },
+  {
+    type: "ideas",
+    lines: [
+      "That's what I was going to do.",
+      "But then I stopped.",
+      "I realised, I wanted to do something <strong>special</strong>.",
+      "Because,",
+      "You are Special <span>:)</span>",
+    ],
+    bigLetters: "SO",
+  },
 
-    {
-      type: "stars",
-      count: 40,
-    },
+  {
+    type: "quote",
+    text:
+      "The more you praise and celebrate your life, the more there is in life to celebrate.",
+    author: "~ Someone Famous",
+  },
 
-    {
-      type: "balloons",
-      count: 25,
-    },
+  {
+    type: "stars",
+    count: 40,
+  },
 
-    {
-      type: "profile",
-      wishTitle: "Happy Birthday!",
-      wishText: "May the js.prototypes always be with you! ;)",
-      wishText: "Keep smiling, keep being your cute self, and please don’t ever change. 🫶🏻",
-    },
+  {
+    type: "balloons",
+    count: 25,
+  },
 
-    {
-      type: "fireworks",
-      count: 24,
-    },
+  {
+    type: "profile",
+    wishTitle: "Happy Birthday!",
+    wishText:
+      "Keep smiling, keep being your cute self, and please don’t ever change. 🫶🏻",
+  },
 
-    {
-      type: "confetti",
-      count: 9,
-    },
+  {
+    type: "fireworks",
+    count: 24,
+  },
 
+  {
+    type: "confetti",
+    count: 9,
+  },
 
-    {
-      type: "announcement",
-      count: 5,
-      text: "Created with ❣️ by The Creative Coder ~ Pranjal "
-    },
+  {
+    type: "announcement",
+    text:
+      "Created with ❣️ by The Creative Coder ~ Pranjal",
+  },
 
-    {
-      type: "closing",
+  {
+    type: "closing",
+    text:
+      "Okay, now come back and tell me if you liked it.",
+    replayText:
+      "Or click, if you want to watch it again.",
+  },
 
-      // Main closing message
-      text: "Okay, now come back and tell me if you liked it.",
-
-      // Replay message
-      replayText: "Or click, if you want to watch it again.",
-
-    },
-  ],
+],
 };
